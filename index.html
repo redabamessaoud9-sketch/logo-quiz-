@@ -21,7 +21,23 @@
         .hidden { display: none !important; }
         .logo-frame { background: white; width: 200px; height: 200px; margin: 20px auto; display: flex; align-items: center; justify-content: center; border-radius: 20px; }
         img { max-width: 180px; max-height: 180px; }
-        .home-preview { max-width: 300px; border-radius: 20px; margin-bottom: 20px; border: 2px solid var(--primary); }
+        
+        /* NOUVEAU STYLE POUR TON IMAGE BOUTON */
+        .home-preview { 
+            max-width: 300px; 
+            border-radius: 20px; 
+            margin-bottom: 20px; 
+            border: 2px solid var(--primary);
+            cursor: pointer; /* Change la souris en main */
+            transition: transform 0.2s ease; /* Prépare l'animation */
+        }
+        
+        /* Effet quand on passe la souris sur l'image */
+        .home-preview:hover {
+            transform: scale(1.05); /* Grossit l'image de 5% */
+            box-shadow: 0 0 15px var(--primary); /* Ajoute un halo lumineux */
+        }
+
         .input-bar { width: 80%; padding: 15px; margin: 20px 0; border-radius: 10px; border: none; text-align: center; font-size: 1.2rem; }
     </style>
 </head>
@@ -30,9 +46,9 @@
 <div class="container">
     <div id="menu-screen">
         <h1>LOGO QUIZ</h1>
-        <img src="image_6444fd.png" alt="Accueil LogoMaster" class="home-preview">
-        <button class="btn" onclick="showCategories()">COMMENCER À JOUER</button>
-    </div>
+        <img src="image_6444fd.png" alt="Accueil LogoMaster" class="home-preview" onclick="showCategories()">
+        
+        </div>
 
     <div id="category-screen" class="hidden">
         <h2>Catégories</h2>
@@ -57,103 +73,24 @@
     const gameCategories = {
         restaurants: [
             { stage: 1, logo: "burger-king.png", answer: "burger king" },
-            { stage: 2, logo: "kfc.png", answer: "kfc" },
-            { stage: 3, logo: "pizza-hut.png", answer: "pizza hut" },
-            { stage: 4, logo: "starbucks.png", answer: "starbucks" },
-            { stage: 5, logo: "dunkin-donuts.png", answer: "dunkin donuts" },
-            { stage: 6, logo: "https://upload.wikimedia.org/wikipedia/en/b/b3/Taco_Bell_2016.svg", answer: "taco bell" },
-            { stage: 7, logo: "https://upload.wikimedia.org/wikipedia/en/d/d2/Pizza_Hut_logo.svg", answer: "pizza hut" },
-            { stage: 8, logo: "https://upload.wikimedia.org/wikipedia/en/3/32/Wendy%27s_full_logo_2012.svg", answer: "wendys" },
-            { stage: 9, logo: "https://upload.wikimedia.org/wikipedia/en/b/b3/Taco_Bell_2016.svg", answer: "taco bell" },
-            { stage: 10, logo: "https://upload.wikimedia.org/wikipedia/en/b/b8/Dunkin%27_Donuts_logo.svg", answer: "dunkin" },
-            { stage: 11, logo: "https://upload.wikimedia.org/wikipedia/en/3/3b/Chipotle_Mexican_Grill_logo.svg", answer: "chipotle" },
-            { stage: 12, logo: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Dairy_Queen_logo.svg", answer: "dairy queen" },
-            { stage: 13, logo: "https://upload.wikimedia.org/wikipedia/en/4/42/Papa_John%27s_Pizza_logo.svg", answer: "papa johns" },
-            { stage: 14, logo: "https://upload.wikimedia.org/wikipedia/en/c/c5/Nandos_logo.svg", answer: "nandos" },
-            { stage: 15, logo: "https://upload.wikimedia.org/wikipedia/commons/8/80/Five_Guys_logo.svg", answer: "five guys" },
-            { stage: 16, logo: "https://upload.wikimedia.org/wikipedia/en/0/07/Shake_Shack_logo.svg", answer: "shake shack" },
-            { stage: 17, logo: "https://upload.wikimedia.org/wikipedia/commons/0/03/In-N-Out_Burger_logo.svg", answer: "in n out" },
-            { stage: 18, logo: "https://upload.wikimedia.org/wikipedia/en/c/ca/Panda_Express_logo.svg", answer: "panda express" },
-            { stage: 19, logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/Tim_Hortons_logo.svg", answer: "tim hortons" },
-            { stage: 20, logo: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Hard_Rock_Cafe_Logo.svg", answer: "hard rock cafe" }
+            { stage: 2, logo: "kfc.png", answer: "kfc" }
+            // ... (garde le reste de tes tableaux de catégories ici)
         ],
         voitures: [
             { stage: 1, logo: "bmw.png", answer: "bmw" },
-            { stage: 2, logo: "ferrari.png", answer: "ferrari" },
-            { stage: 3, logo: "tesla.png", answer: "tesla" },
-            { stage: 4, logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Porsche_emblem.svg", answer: "porsche" },
-            { stage: 5, logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg", answer: "mercedes" },
-            { stage: 6, logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg", answer: "bmw" },
-            { stage: 7, logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Audi_logo.svg", answer: "audi" },
-            { stage: 8, logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Volkswagen_logo_2019.svg", answer: "volkswagen" },
-            { stage: 9, logo: "https://upload.wikimedia.org/wikipedia/en/d/df/Lamborghini_Logo.svg", answer: "lamborghini" },
-            { stage: 10, logo: "https://upload.wikimedia.org/wikipedia/en/d/df/Ferrari_logo.svg", answer: "ferrari" },
-            { stage: 11, logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg", answer: "mercedes" },
-            { stage: 12, logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Porsche_emblem.svg", answer: "porsche" },
-            { stage: 13, logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg", answer: "bmw" },
-            { stage: 14, logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Audi_logo.svg", answer: "audi" },
-            { stage: 15, logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Volkswagen_logo_2019.svg", answer: "volkswagen" },
-            { stage: 16, logo: "https://upload.wikimedia.org/wikipedia/en/d/df/Lamborghini_Logo.svg", answer: "lamborghini" },
-            { stage: 17, logo: "https://upload.wikimedia.org/wikipedia/en/d/df/Ferrari_logo.svg", answer: "ferrari" },
-            { stage: 18, logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg", answer: "mercedes" },
-            { stage: 19, logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Porsche_emblem.svg", answer: "porsche" },
-            { stage: 20, logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg", answer: "bmw" }
+            { stage: 2, logo: "ferrari.png", answer: "ferrari" }
         ],
         vetements: [
             { stage: 1, logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg", answer: "nike" },
-            { stage: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg", answer: "adidas" },
-            { stage: 3, logo: "https://upload.wikimedia.org/wikipedia/commons/7/75/Levi%27s_logo.svg", answer: "levis" },
-            { stage: 4, logo: "https://upload.wikimedia.org/wikipedia/en/f/f6/Puma_logo.svg", answer: "puma" },
-            { stage: 5, logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Zara_Logo.svg", answer: "zara" },
-            { stage: 6, logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg", answer: "h&m" },
-            { stage: 7, logo: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Gucci_Logo.svg", answer: "gucci" },
-            { stage: 8, logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Louis_Vuitton_logo_and_wordmark.svg", answer: "louis vuitton" },
-            { stage: 9, logo: "https://upload.wikimedia.org/wikipedia/en/b/b3/Chanel_logo_interlocking_cs.svg", answer: "chanel" },
-            { stage: 10, logo: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Dior_Logo.svg", answer: "dior" },
-            { stage: 11, logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Prada-Logo.svg", answer: "prada" },
-            { stage: 12, logo: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Rolex_logo.svg", answer: "rolex" },
-            { stage: 13, logo: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Herm%C3%A8s_Logo.svg", answer: "hermes" },
-            { stage: 14, logo: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Burberry_logo.svg", answer: "burberry" },
-            { stage: 15, logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Balenciaga_Logo.svg", answer: "balenciaga" },
-            { stage: 16, logo: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Versace_logo.svg", answer: "versace" },
-            { stage: 17, logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Ralph_Lauren_logo.svg", answer: "ralph lauren" },
-            { stage: 18, logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Tommy_Hilfiger_Logo.svg", answer: "tommy hilfiger" },
-            { stage: 19, logo: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Fila_logo.svg", answer: "fila" },
-            { stage: 20, logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Reebok_logo.svg", answer: "reebok" }
+            { stage: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg", answer: "adidas" }
         ],
         technologie: [
             { stage: 1, logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", answer: "google" },
-            { stage: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", answer: "apple" },
-            { stage: 3, logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", answer: "microsoft" },
-            { stage: 4, logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg", answer: "samsung" },
-            { stage: 5, logo: "https://upload.wikimedia.org/wikipedia/commons/c/c4/Sony_logo.svg", answer: "sony" },
-            { stage: 6, logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg", answer: "netflix" },
-            { stage: 7, logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", answer: "amazon" },
-            { stage: 8, logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg", answer: "ibm" },
-            { stage: 9, logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/HP_New_Logo_2D.svg", answer: "hp" },
-            { stage: 10, logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg", answer: "dell" },
-            { stage: 11, logo: "https://upload.wikimedia.org/wikipedia/commons/d/d7/AsusTek-black-logo.svg", answer: "asus" },
-            { stage: 12, logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_2011.svg", answer: "acer" },
-            { stage: 13, logo: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg", answer: "lenovo" },
-            { stage: 14, logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Panasonic_logo_%28Blue%29.svg", answer: "panasonic" },
-            { stage: 15, logo: "https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg", answer: "lg" },
-            { stage: 16, logo: "https://upload.wikimedia.org/wikipedia/commons/0/02/Nokia_wordmark.svg", answer: "nokia" },
-            { stage: 17, logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Motorola_wordmark_2013.svg", answer: "motorola" },
-            { stage: 18, logo: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Huawei_Logo.svg", answer: "huawei" },
-            { stage: 19, logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg", answer: "xiaomi" },
-            { stage: 20, logo: "https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg", answer: "spotify" }
+            { stage: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", answer: "apple" }
         ],
         boissons: [
             { stage: 1, logo: "coca-cola.png", answer: "coca cola" },
-            { stage: 2, logo: "pepsi.png", answer: "pepsi" },
-            { stage: 3, logo: "fanta.png", answer: "fanta" },
-            { stage: 4, logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Sprite_logo_2022.svg", answer: "sprite" },
-            { stage: 5, logo: "https://upload.wikimedia.org/wikipedia/en/f/f5/RedBull_logo.svg", answer: "red bull" },
-            { stage: 6, logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/Monster_Energy_logo.svg", answer: "monster" },
-            { stage: 7, logo: "https://upload.wikimedia.org/wikipedia/commons/0/07/Lipton_logo_2014.svg", answer: "lipton" },
-            { stage: 8, logo: "https://upload.wikimedia.org/wikipedia/commons/7/74/Nespresso_logo.svg", answer: "nespresso" },
-            { stage: 9, logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Nescafe_logo.svg", answer: "nescafe" },
-            { stage: 10, logo: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Evian_logo.svg", answer: "evian" },
+            { stage: 2, logo: "pepsi.png", answer: "pepsi" }
         ],
         equipes: [
             { stage: 1, logo: "https://upload.wikimedia.org/wikipedia/fr/b/bd/Logo_Paris_Saint-Germain.svg", answer: "psg" },
